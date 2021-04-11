@@ -46,7 +46,6 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 
-    'user',
     'hood',
     'cloudinary',
     'bootstrap4',
@@ -102,7 +101,7 @@ DATABASES = {
         'HOST': os.environ.get('DB_HOST', 'localhost'),
         'PORT': '',
         'TEST': {
-            'NAME': 'vote',
+            'NAME': 'hood',
         }
     }
 }
