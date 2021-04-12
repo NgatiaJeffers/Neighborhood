@@ -41,10 +41,7 @@ def profile(request):
 
 @login_required(login_url='accounts/login/')
 def post(request):
-    try:
-        posts = Post.objects.all('-posted_on')
-    except Exception as e:
-        raise Http404
+    posts = Post.objects.all()
     return render(request, "main/post.html", {"posts": posts})
 
 @login_required(login_url='accounts/login/')
