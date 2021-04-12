@@ -60,12 +60,12 @@ class Post(models.Model):
     title = models.CharField(max_length=50)
     description = models.TextField(max_length=500)
     posted_by = models.ForeignKey(User, on_delete=models.CASCADE)
-    neighborhood = models.ForeignKey('Hood', on_delete=models.CASCADE)
+    neighborhood = models.ForeignKey(Hood, on_delete=models.CASCADE)
     posted_on = models.DateTimeField(auto_now_add=True)
     image = CloudinaryField('image')
 
     def __str__(self):
-        return self.name
+        return self.title
 
     def save_post(self):
         self.save()
