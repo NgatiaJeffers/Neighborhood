@@ -37,7 +37,7 @@
                     </a>
                 </li>
                 <li>
-                    <a href="#">
+                    <a href="{% url 'profile' %}">
                         <i class="now-ui-icons users_single-02"></i>
                         <p>User Profile</p>
                     </a>
@@ -69,12 +69,12 @@
                             <input class="form-control mr-1" type="search" placeholder="Search" aria-label="Search">
                             <!-- <button class="btn btn-info" type="submit"><i class="fas fa-search"></i></button> -->
                         </form>
-                        <li class="nav-item active">
-                            <a class="nav-link" href="#">
-                                Hello
+                        <li>
+                            <a class="nav-link" href="{% url 'add_hood' %}">
+                                New Hood
                             </a>
                         </li>
-                        <li class="nav-item active">
+                        <li>
                             <a class="nav-link" href="#">
                                 <i class="fa fa-user-o fa-lg"></i>
                             </a>
