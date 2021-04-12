@@ -66,9 +66,9 @@ def new_biz(request):
     if request.method == "POST":
         business_form = BusinessForm(request.POST, request.FILES)
         if business_form.is_valid():
-            business = Business(name = request.POST['name'], user = user, neighborhood = profile.Hood, email = request.POST['email'])
+            business = Business(name = request.POST['name'], neighborhood = profile.neighborhood)
             business.save()
-        return redirect('new_biz.html')
+        return redirect('business')
     else:
         business_form = BusinessForm()
     return render(request, "main/new_biz.html", {"business": business_form})
