@@ -5,4 +5,5 @@ urlpatterns = [
     path('', views.index, name = 'home'),
     path("add_hood/", views.create_hood, name = "add_hood"),
     path("profile/", views.profile, name = "profile"),
+    path("logout/", views.logout, name = "logout"),
 ]

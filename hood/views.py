@@ -4,6 +4,7 @@ from django.contrib.auth.decorators import login_required
 from .models import Hood, Profile, Business, Post
 from django.http import Http404
 from .forms import *
+from django.contrib.auth import logout as django_logout
 
 # Create your views here.
 @login_required(login_url='accounts/login/')
@@ -30,19 +31,18 @@ def create_hood(request):
 
 @login_required(login_url='accounts/login/')
 def profile(request):
-    current_user = request.user
     if request.method == "POST":
         form = ProfileForm(request.POST, request.FILES)
         if form.is_valid():
-            profile = form.save(commit = False)
-            profile.user = current_user
-            profile.save()
-        return HttpResponseRedirect('profile')
+            form.save()
+            return redirect("profile")
+
     else:
         form = ProfileForm()
-    
-    try:
-        profile = Profile.object.filter(user = current_user)
-    except Exception as e:
-        raise Http404
     return render(request, "main/profile.html", {"form": form, "profile": profile})
+
+@login_required
+def logout(request):
+    django_logout(request)
+    return  HttpResponseRedirect('/')
+
