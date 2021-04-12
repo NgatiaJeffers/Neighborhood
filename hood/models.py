@@ -45,7 +45,6 @@ class Business(models.Model):
     description = models.CharField(max_length=400, null=True)
     neighborhood = models.ForeignKey(Hood, on_delete=models.CASCADE)
     email = models.EmailField()
-    image = CloudinaryField('image')
 
     def __str__(self):
         return self.name

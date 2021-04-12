@@ -5,6 +5,7 @@ from .models import Hood, Profile, Business, Post
 from django.http import Http404
 from .forms import *
 from django.contrib.auth import logout as django_logout
+from django.contrib.auth.models import User
 
 # Create your views here.
 @login_required(login_url='accounts/login/')
@@ -58,8 +59,22 @@ def new_post(request):
         form = PostForm()
     return render(request, "main/new_post.html", {"form": form})
 
+@login_required(login_url='accounts/login/')
+def new_biz(request):
+    user = User.objects.filter(id = request.user.id).first()
+    profile = Profile.objects.filter(user = user).first()
+    if request.method == "POST":
+        business_form = BusinessForm(request.POST, request.FILES)
+        if business_form.is_valid():
+            business = Business(name = request.POST['name'], user = user, neighborhood = profile.Hood, email = request.POST['email'])
+            business.save()
+        return redirect('new_biz.html')
+    else:
+        business_form = BusinessForm()
+    return render(request, "main/new_biz.html", {"business": business_form})
+
+
 @login_required
 def logout(request):
     django_logout(request)
     return  HttpResponseRedirect('/')
-

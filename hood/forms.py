@@ -9,7 +9,7 @@ class ProfileForm(forms.ModelForm):
 class BusinessForm(forms.ModelForm):
     class Meta:
         model = Business
-        fields = ['user', 'name', 'description', 'neighborhood', 'image']
+        fields = ['user', 'name', 'description', 'neighborhood']
 
 class HoodForm(forms.ModelForm):
     class Meta:
