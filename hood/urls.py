@@ -5,7 +5,7 @@ urlpatterns = [
     path('', views.index, name = 'home'),
     path("add_hood/", views.create_hood, name = "add_hood"),
     path("new_post/", views.new_post, name = "new_post"),
-    path("posts/", views.post, name = "posts"),
+    path("notification/posts/", views.post, name = "post"),
     path("profile/", views.profile, name = "profile"),
     path("logout/", views.logout, name = "logout"),
 ]

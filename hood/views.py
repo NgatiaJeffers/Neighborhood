@@ -56,7 +56,7 @@ def new_post(request):
             post.hood = request.user.profile.neighborhood
             post.posted_by = request.user
             post.save()
-            return redirect("notifications")
+            return redirect("post")
     else:
         form = PostForm()
     return render(request, "main/new_post.html", {"form": form})
