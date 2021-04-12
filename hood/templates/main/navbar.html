@@ -31,7 +31,7 @@
                     </a>
                 </li>
                 <li>
-                    <a href="#">
+                    <a href="{% url 'posts' %}">
                         <i class="now-ui-icons ui-1_bell-53"></i>
                         <p>Notifications</p>
                     </a>
@@ -51,7 +51,7 @@
                 <li>
                     <a href="#">
                         <i class="now-ui-icons text_caps-small"></i>
-                        <p>Join a Hood</p>
+                        <p>Join a Neighborhood</p>
                     </a>
                 </li>
             </ul>
@@ -72,6 +72,11 @@
                         <li>
                             <a class="nav-link" href="{% url 'add_hood' %}">
                                 New Hood
+                            </a>
+                        </li>
+                        <li>
+                            <a class="nav-link" href="{% url 'new_post' %}">
+                                New Post
                             </a>
                         </li>
                         <li>

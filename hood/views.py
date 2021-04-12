@@ -39,6 +39,28 @@ def profile(request):
         form = ProfileForm()
     return render(request, "main/profile.html", {"form": form, "profile": profile})
 
+@login_required(login_url='accounts/login/')
+def post(request):
+    try:
+        posts = Post.objects.all('-posted_on')
+    except Exception as e:
+        raise Http404
+    return render(request, "main/post.html", {"posts": posts})
+
+@login_required(login_url='accounts/login/')
+def new_post(request):
+    if request.method == "POST":
+        form = PostForm(request.POST, request.FILES)
+        if form.is_valid():
+            post = form.save(commit = False)
+            post.hood = request.user.profile.neighborhood
+            post.posted_by = request.user
+            post.save()
+            return redirect("notifications")
+    else:
+        form = PostForm()
+    return render(request, "main/new_post.html", {"form": form})
+
 @login_required
 def logout(request):
     django_logout(request)
