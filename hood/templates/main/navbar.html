@@ -1,3 +1,4 @@
+    {% if user.is_authenticated %}
     <div class="sidebar" data-color="blue">
         <!--
     Tip 1: You can change the color of the sidebar using: data-color="blue | green | orange | red | yellow"
@@ -90,3 +91,5 @@
         </nav>
         <!-- End Navbar -->
     </div>
+    {% else %}
+    {% endif %}
