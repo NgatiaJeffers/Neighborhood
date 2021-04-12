@@ -12,7 +12,7 @@
                     <h5 class="title">Edit Profile</h5>
                 </div>
                 <div class="card-body">
-                    <form>
+                    <form method="POST" enctype="multipart/form-data">
                         <div class="row">
                             <div class="col-md-6 pr-1">
                                 <div class="form-group">
@@ -44,9 +44,7 @@
                         </p>
                     </div>
                     <p class="description text-center">
-                        "{{ user.bio }}"
-                        <br> Your chick she so thirsty
-                        <br> I'm in that two seat Lambo"
+                        "{{ user.profile.bio }}"
                     </p>
                 </div>
                 <hr>
