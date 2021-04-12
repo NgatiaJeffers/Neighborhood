@@ -41,7 +41,7 @@ def profile(request):
 
 @login_required(login_url='accounts/login/')
 def post(request):
-    posts = Post.objects.all()
+    posts = Post.objects.all().order_by('-posted_on')
     return render(request, "main/post.html", {"posts": posts})
 
 @login_required(login_url='accounts/login/')
