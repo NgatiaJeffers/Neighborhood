@@ -20,19 +20,19 @@ The system will have three main users.
 - See all users
 - Change user statuses: Either from neighborhood admin to regular user, or - the opposite.
 - Remove users.
-- Neighborhood Administrator features
+ #### Neighborhood Administrator features
+- A neighborhood admin should be able to:
 
- ### A neighborhood admin should be able to:
+1. Add information about neighborhoods for example: Add businesses, health   care centers, police stations, etc.
+2. Perform all the operations of a normal user
 
-- Add information about neighborhoods for example: Add businesses, health   care centers, police stations, etc.
-- Perform all the operations of a normal user
-- Normal authenticated users should be able to:
+#### Normal authenticated users should be able to:
 - 
 - Sign in to the application to start using it.
 - Set up a profile which contains:
-- My name 
-- My location 
-- My neighborhood name 
+    1. My name 
+    2. My location 
+    3. My neighborhood name 
 - Find a list of different businesses in my neighborhood.
 - Find Contact Information for the emergency services (health department, - fire department, and Police authorities) near my neighborhood.
 - Create Posts that will be visible to everyone in my neighborhood.

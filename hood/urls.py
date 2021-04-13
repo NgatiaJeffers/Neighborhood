@@ -1,5 +1,6 @@
 from django.urls import path
 from . import views
+from rest_framework.authtoken.views import obtain_auth_token
 
 urlpatterns = [
     path('', views.index, name = 'home'),
@@ -9,4 +10,8 @@ urlpatterns = [
     path("profile/", views.profile, name = "profile"),
     path("business/", views.new_biz, name = "business"),
     path("logout/", views.logout, name = "logout"),
+    path("api/hood/", views.HoodList.as_view()),
+    path("api/profile/", views.ProfileList.as_view()),
+    path("token/", obtain_auth_token),
+    path("developer/api/", views.apiView, name = "api")
 ]

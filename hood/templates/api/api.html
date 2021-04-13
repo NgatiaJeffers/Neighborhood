@@ -1,0 +1,35 @@
+{% extends "main/base.html" %}
+{% load static %}
+{% load cloudinary %}
+
+{% block content %}
+
+<section class="py-5">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-6 mt-5 mx-auto">
+
+                <!-- CUSTOM BLOCKQUOTE -->
+                <blockquote class="blockquote blockquote-custom bg-white p-5 shadow rounded">
+                    <div class="blockquote-custom-icon bg-info shadow-sm"></div>
+                    <p class="mb-0 mt-2 font-italic">"Neighborhood Watch Website grants You a limited terminable licence 
+                        to copy and use the Neighborhood Watch Website Data, subject
+                        to certain restrictions set out in this Agreement and any
+                        additional restrictions arising from changes to Neighborhood Watch
+                        Website's Privacy Policy from time to time.
+                        Although You are granted this licence without charge, Neighborhood Watch Website
+                        reserves the right to <a href="/api/profile/" class="text-info">share</a> in revenue generated from your use of
+                        Neighborhood Watch WebsiteData in future on terms to be negotiated
+                        in good faith between Neighborhood Watch Website and You.
+                        This Agreement covers only Your use of Neighborhood Watch Website Data. You must not
+                        sub-license the Neighborhood Watch Website Data to others. <a href="/api/hood/" class="text-info">View API</a>."</p>
+                    <footer class="blockquote-footer pt-4 mt-4 border-top">Website created by
+                        <cite title="Source Title">Dev Gakuya</cite>
+                    </footer>
+                </blockquote><!-- END -->
+
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

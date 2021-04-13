@@ -50,6 +50,8 @@ INSTALLED_APPS = [
     'cloudinary',
     'bootstrap4',
     'django_registration',
+    'rest_framework',
+    'rest_framework.authtoken',
 ]
 
 cloudinary.config( 

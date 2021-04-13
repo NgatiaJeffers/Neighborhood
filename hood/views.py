@@ -6,6 +6,9 @@ from django.http import Http404
 from .forms import *
 from django.contrib.auth import logout as django_logout
 from django.contrib.auth.models import User
+from rest_framework.response import Response
+from rest_framework.views import APIView
+from .serializer import HoodSerializer,ProfileSerializer
 
 # Create your views here.
 @login_required(login_url='accounts/login/')
@@ -78,3 +81,24 @@ def new_biz(request):
 def logout(request):
     django_logout(request)
     return  HttpResponseRedirect('/')
+
+@login_required(login_url='/accounts/login/')
+def apiView(request):
+    current_user = request.user
+    profiles = Profile.objects.filter(user = current_user)[0:1]
+
+    return render(request, "api/api.html", {"profile": profiles})
+
+class ProfileList(APIView):
+    def get(self, request, format = None):
+        all_profiles = Profile.objects.all()
+        serializers = ProfileSerializer(all_profiles, many = True)
+
+        return Response(serializers.data)
+
+class HoodList(APIView):
+    def get(self, request, format = None):
+        all_hoods = Hood.objects.all()
+        serializers = HoodSerializer(all_hoods, many = True)
+
+        return Response(serializers.data)
