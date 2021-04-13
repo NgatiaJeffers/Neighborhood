@@ -1,3 +1,4 @@
+from django.http import response
 from django.http.response import Http404, HttpResponseRedirect
 from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
@@ -9,6 +10,10 @@ from django.contrib.auth.models import User
 from rest_framework.response import Response
 from rest_framework.views import APIView
 from .serializer import HoodSerializer,ProfileSerializer
+from rest_framework.authtoken.models import Token
+from rest_framework.decorators import api_view
+
+from hood import serializer
 
 # Create your views here.
 @login_required(login_url='accounts/login/')
@@ -84,8 +89,10 @@ def logout(request):
 
 @login_required(login_url='/accounts/login/')
 def apiView(request):
+    data = {}
     current_user = request.user
     profiles = Profile.objects.filter(user = current_user)[0:1]
+    
 
     return render(request, "api/api.html", {"profile": profiles})
 
@@ -102,3 +109,18 @@ class HoodList(APIView):
         serializers = HoodSerializer(all_hoods, many = True)
 
         return Response(serializers.data)
+
+@api_view(['POST'])
+def token(request):
+    current_user = request.user
+    if request.method == "POST":
+        serializer = ProfileSerializer(data = request.data)
+        data = {}
+        if serializer.is_valid():
+            account = current_user
+            token = Token.objects.get(user = account).key
+            data['token'] = token
+        else:
+            data = serializer.errors
+        return Response(data)
+

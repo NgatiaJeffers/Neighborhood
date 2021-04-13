@@ -12,6 +12,6 @@ urlpatterns = [
     path("logout/", views.logout, name = "logout"),
     path("api/hood/", views.HoodList.as_view()),
     path("api/profile/", views.ProfileList.as_view()),
-    path("token/", obtain_auth_token),
-    path("developer/api/", views.apiView, name = "api")
+    path("token/", obtain_auth_token, name = "token"),
+    path("developer/api/", views.apiView, name = "api"),
 ]
